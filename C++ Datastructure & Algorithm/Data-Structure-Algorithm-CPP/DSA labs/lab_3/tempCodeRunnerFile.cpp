@@ -1,0 +1,1 @@
+cout<<array[n]<<endl;

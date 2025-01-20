@@ -1,0 +1,15 @@
+{
+    "name": "Jone",
+    "age": 20,
+    "department": "Data Science",
+    "marks": [
+        21,
+        30,
+        35
+    ],
+    "is_student": true,
+    "address": {
+        "street": "123 mian str",
+        "city": "New York"
+    }
+}

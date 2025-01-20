@@ -1,0 +1,16 @@
+
+
+import math  #this library contain alost of mathematical fuctions
+
+#now to find out the 2 power 5 through bulitin function 
+print("result :",pow(2,5))
+
+import statistics  #this library contain statistical fuctions ie athirmatic mean ,median etc
+
+marks=[342,532,533,232,234]
+mean=statistics.mean(marks)
+print("mean :",mean)
+
+#note that
+#there in python there are alots of most important libraries of data analyses 
+#ie numpy, pandas etc
