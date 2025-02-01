@@ -1,0 +1,4 @@
+fastapi
+uvicorn fastapi
+--pre SQLAlchemy
+sqlmodel
