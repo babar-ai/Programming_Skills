@@ -1,0 +1,88 @@
+
+
+# main.py
+# Roadmap to building Database connection
+'''
+1. userguid  -> SQL(Relational) Database -> ORM (object Relational mapping) -> SQLALchemy(ORM) -> Database configuration -> SQLALchemy + pydantic = SQLMODEL
+
+'''
+
+
+what is ORM?
+
+ORM (Object-Relational Mapping) is a programming technique that allows developers to interact with a relational database using objects,
+rather than writing raw SQL queries. It provides a way to map tables in a database to classes in a programming language, and rows in those
+tables to objects of those classes.
+SQLAlchemy: A powerful and widely-used ORM in Python.
+SQLmodel is anther ORM
+
+
+Create a Session Dependency?
+
+A Session is what stores the objects in memory and keeps track of any changes needed in the data, then it uses the engine to communicate with the database.
+We will create a FastAPI dependency with yield that will provide a new Session for each request. This is what ensures that we use a single session per request. 🤓
+Then we create an Annotated dependency SessionDep to simplify the rest of the code that will use this dependency.
+
+
+Depends?
+
+In FastAPI, Depends is a dependency injection system that allows you to define reusable logic or components and inject them into your endpoints or
+ other functions. It is imported from fastapi as Depends.
+What is Dependency Injection?
+Dependency Injection is a design pattern where dependencies (like reusable functions, database connections, or authentication logic) are "injected" into a function or
+ class instead of being hardcoded. This makes your code modular, reusable, and easier to test.
+
+
+Annotated?
+
+ In FastAPI, Annotated is used to provide metadata about function parameters, primarily to define dependencies, validation,
+or additional type hints in a cleaner way.
+
+
+
+PATCH request
+Your PATCH request in FastAPI is designed to update an existing hero in the database using session.get() to fetch the hero and 
+sqlmodel_update() to apply changes
+
+
+
+RESPONSE STATUS CODE
+
+A Response Status Code is a three-digit number sent by a server in response to
+a client's request. It indicates whether the request was successful, failed, or requires further action.
+
+These codes are part of the HTTP protocol and are categorized into five groups:
+
+1. Informational (100–199)
+🔹 Indicates that the request was received and is being processed.
+100 Continue → Client can continue sending the request.
+101 Switching Protocols → Server is switching protocols (e.g., from HTTP to WebSocket).
+
+2. Success (200–299)
+✅ Indicates that the request was successfully processed.
+
+200 OK → The request was successful.
+201 Created → A new resource was created (e.g., after a POST request).
+204 No Content → The request was successful, but there is no response body.
+
+3. Redirection (300–399)
+🔄 Indicates that further action is needed (e.g., redirection).
+
+301 Moved Permanently → The resource has moved to a new URL.
+302 Found → Temporary redirection.
+304 Not Modified → The requested resource has not changed since the last request.
+
+4. Client Errors (400–499)
+❌ Indicates an error from the client's side (e.g., bad request, unauthorized access).
+
+400 Bad Request → The request is invalid or malformed.
+401 Unauthorized → Authentication is required.
+403 Forbidden → The client does not have permission.
+404 Not Found → The requested resource does not exist.
+
+5. Server Errors (500–599)
+⚠️ Indicates that the server encountered an error while processing the request.
+
+500 Internal Server Error → Generic server failure.
+502 Bad Gateway → Server received an invalid response from another server.
+503 Service Unavailable → Server is down or overloaded.

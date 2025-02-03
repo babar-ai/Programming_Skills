@@ -19,3 +19,4 @@ engine = create_engine(
 #to create the tables for all the table models.
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
+    
