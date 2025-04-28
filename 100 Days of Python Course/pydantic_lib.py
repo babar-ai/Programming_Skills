@@ -6,7 +6,7 @@
 '''
 What is Pydantic?
 Pydantic is a data validation and parsing library for Python. It provides a simple and intuitive way to define data models with type annotations and automatically validates, parses, and converts data to ensure it conforms to the specified schema.
-
+Parsing is the process of analyzing and converting data (often text) into a structure that a program can understand and work with.
 Pydantic is widely used in modern Python web frameworks (like FastAPI) and other applications that deal with structured data, such as JSON, APIs, or configurations.
 
 #Key Features of Pydantic
@@ -35,7 +35,7 @@ Purpose of BaseModel
 
 #example
 from pydantic import BaseModel, EmailStr
-
+#note Without BaseModel, it’s just a regular Python class which will not perform any automation like type validation , automatic type casting, .dic() and .jeson() will not works
 class User(BaseModel):
     id: int 
     name: str
@@ -54,3 +54,40 @@ print(user_dict)
 #convet inot json()
 user_json = user.json()
 print(user_json)               #json format
+
+
+#anther powerfull feature of pydantic 
+
+from pydantic import BaseModel, EmailStr
+
+# Define Address model
+class Address(BaseModel):
+    street: str
+    city: str
+    zipcode: str
+
+# Define User model with Address nested
+class User(BaseModel):
+    id: int
+    name: str
+    email: EmailStr
+    address: Address  # Nested model
+    is_active: bool = True
+
+# user = User(id = 1, ...)
+user_data = {                        #this is the json format in which you usually received data 
+    "id": 1,
+    "name": "Babar",
+    "email": "baberraheem055@gmail.com",
+    "address": {
+        "street": "123 Main St",
+        "city": "Islamabad",
+        "zipcode": "44000"
+    }
+}
+
+user = User(**user_data)   #note: *args → for unpacking a list or tuple and **kwargs → for unpacking a dictionary
+
+print(user)
+print(user.dict())
+
