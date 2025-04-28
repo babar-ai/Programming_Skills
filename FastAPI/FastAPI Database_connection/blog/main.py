@@ -7,6 +7,7 @@ from Database import engine, create_db_and_tables
 
 
 # Dependency to get a database session.. see readme
+# This function provides a session to interact with the database.Used by FastAPI's Depends() to inject a live session into endpoints.
 def get_session():                   
     with Session(engine) as session:
         yield session
@@ -20,6 +21,7 @@ app = FastAPI()
 
 
 # We will create the database tables when the application starts.
+# FastAPI event handler.It runs the function once when the application starts up — before it begins handling any requests.
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()

@@ -1,7 +1,7 @@
 from sqlmodel import SQLModel, Field        # SQLModel(ORM) = pydantic+sqlalchemy = Object relational mapping, 
                                             # Field: Used to add metadata (like primary keys, defaults, etc.) to model fields.
 
-
+#SQLModel is a library built on top of SQLAlchemy and Pydantic.
     
 class HeroBase(SQLModel):                  # Inherits from SQLModel to get Pydantic + SQLAlchemy features. True indicate to create table 
     
